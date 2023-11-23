@@ -1,0 +1,41 @@
+import java.util.Scanner;
+
+public class BMICalculator {
+
+    public static void main(String[] args) {
+     
+        try (Scanner scanner = new Scanner(System.in)) {
+            System.out.print("Masukkan berat badan (kg): ");
+            double weight = scanner.nextDouble();
+            System.out.print("Masukkan tinggi badan (m): ");
+            double height = scanner.nextDouble();
+            
+            
+            double bmi = calculateBMI(weight, height);
+            
+            
+            System.out.println("BMI Anda adalah: " + bmi);
+            
+            
+            String category = determineBMICategory(bmi);
+            System.out.println("Kategori BMI Anda: " + category);
+        }
+    }
+
+    private static double calculateBMI(double weight, double height) {
+        return weight / (height * height);
+    }
+
+    
+    private static String determineBMICategory(double bmi) {
+        if (bmi < 18.5) {
+            return "Kurus";
+        } else if (bmi >= 18.5 && bmi < 25) {
+            return "Normal";
+        } else if (bmi >= 25 && bmi < 30) {
+            return "Gemuk";
+        } else {
+            return "Obesitas";
+        }
+    }
+}
